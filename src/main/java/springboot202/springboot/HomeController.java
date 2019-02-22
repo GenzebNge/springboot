@@ -16,8 +16,10 @@ public class HomeController {
     }
     @GetMapping("/songform")
     public String loadFormPage(Model model){
-        model.addAttribute("song", new Song(43,  "Traditional", "Tedy",  "twelve", 200, 2017));
-        return "songform";
+        model.addAttribute("song", new Song());
+//        model.addAttribute("song", new Song(145,"Teddy", 50, 2018,new Album().setName("Ethiopian")));
+//       model.addAttribute("song", new Song(43,  "Fasil", "98",  "2018", 200, 2017));
+      return "addsong";
     }
 
     @PostMapping("/songform")

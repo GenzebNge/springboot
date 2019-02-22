@@ -1,22 +1,27 @@
 package springboot202.springboot;
 
+import javax.persistence.*;
+
+@Entity
 public class Song {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private String name;
     private String artist;
-    private String album;
     private int rating;
     private int year;
+    @ManyToOne
+    private Album albumName;
 
+    public Song() {
+    }
 
-    public Song(long id, String name, String artist, String album, int rating, int year) {
-        this.id = id;
-        this.name = name;
+    public Song(String name, String artist, int rating, int year, Album albumName) {
         this.artist = artist;
-        this.album = album;
         this.rating = rating;
         this.year = year;
+        this.albumName = albumName;
     }
 
     public long getId() {
@@ -27,13 +32,6 @@ public class Song {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getArtist() {
         return artist;
@@ -41,14 +39,6 @@ public class Song {
 
     public void setArtist(String artist) {
         this.artist = artist;
-    }
-
-    public String getAlbum() {
-        return album;
-    }
-
-    public void setAlbum(String album) {
-        this.album = album;
     }
 
     public int getRating() {
@@ -65,5 +55,13 @@ public class Song {
 
     public void setYear(int year) {
         this.year = year;
+    }
+
+    public Album getAlbumName() {
+        return albumName;
+    }
+
+    public void setAlbumName(Album albumName) {
+        this.albumName = albumName;
     }
 }
